@@ -20,7 +20,7 @@ import { Input } from "@/components/ui/input";
 
 import Image from "next/image";
 import { useMemo, useState } from "react";
-import { Copy, Ellipsis } from "lucide-react";
+import { Copy, Ellipsis, Trash } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface DashBoardTableProps {
@@ -106,6 +106,22 @@ export function DashboardTable({ data }: DashBoardTableProps) {
                       }}
                     >
                       <Copy size="16" /> Copy File Link
+                    </DropdownMenuItem>
+                    <DropdownMenuItem
+                      className="gap-2 flex items-center text-red-500"
+                      onClick={() => {
+                        fetch(`/api/uploadthing/delete`, {
+                          method: "POST",
+                          headers: {
+                            "Content-Type": "application/json",
+                          },
+                          body: JSON.stringify({
+                            fileKeys: [file.key],
+                          }),
+                        });
+                      }}
+                    >
+                      <Trash size="16" /> Delete File
                     </DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
