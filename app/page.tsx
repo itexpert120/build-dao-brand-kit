@@ -1,23 +1,9 @@
-export const dynamic = "force-dynamic";
-
 import { DashboardTable } from "@/components/dashboard-table";
 import { Button } from "@/components/ui/button";
-import { utapi } from "@/server/uploadthing";
 import { Upload } from "lucide-react";
 import Link from "next/link";
 
-async function getFiles() {
-  "use server";
-  const files = await utapi.listFiles();
-  return files;
-}
-
 export default async function Home() {
-  const data = await getFiles();
-  const files = {
-    files: data.files,
-    hasMore: data.hasMore,
-  };
   return (
     <main className="p-4">
       <div className="flex items-center justify-between mb-4">
@@ -33,7 +19,7 @@ export default async function Home() {
           </Link>
         </Button>
       </div>
-      <DashboardTable data={files} />
+      <DashboardTable />
     </main>
   );
 }
