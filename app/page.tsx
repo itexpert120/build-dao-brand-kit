@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { DashboardTable } from "@/components/dashboard-table";
 import { Button } from "@/components/ui/button";
 import { utapi } from "@/server/uploadthing";
