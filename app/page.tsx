@@ -8,7 +8,9 @@ import Link from "next/link";
 
 async function getFiles() {
   "use server";
+  console.log("getFiles");
   const files = await utapi.listFiles();
+  console.log("files", files);
   return files;
 }
 
