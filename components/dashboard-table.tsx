@@ -161,7 +161,7 @@ export function DashboardTable() {
                               fileKeys: [file.key],
                             }),
                           });
-                          await fetchData();
+                          setTimeout(fetchData, 1000);
                         }}
                       >
                         <Trash size="16" /> Delete File
